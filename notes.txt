@@ -113,3 +113,22 @@ Summary
 Registration
 -------------------------------
 
+Overview
+	It is easy to build the feature insecurely
+	There are many edge cases
+	Registration forms are frequently a target of online attacks
+
+Using email adresses as usernames
+	pros and cons of email as username
+		Easier to remember
+		One less field to capture at signup
+		It is already unique per user
+			Except when it is not unique per user
+		Must be able to change in the future
+	pros and cons of free text for username
+		Can be displayed to users with less privacy risk
+			Discussion boards or whatever
+		Enables multiple accounts against one email
+			but makes password resets hard
+				so we make sure the email adress does not already exists in the system
+		Requires a "retrieve my username" feature
