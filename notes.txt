@@ -54,3 +54,62 @@ Summary
 Password storage
 -------------------------------
 
+Overview
+	This is often the last line of defense in the system
+	There are many ways of storing them
+		and many of them are useless
+	Passwords are significant personal info
+		People re-use them
+
+The importance of password storage
+	Passwords may be exfiltrated (SQL injection)
+	Operators may access passwords
+	Passwords "at rest" (backed up) may be disclosed
+
+What is wrong with plain text storage?
+	Once the passwords are disclosed, it is game over
+	It contravenes many compliance standards
+	Stronger passwords offer no further cryptographic protection
+	If disclosed, what other systems does it compromise for the user?
+
+What is wrong with encryption?
+	Because it can be decrypted
+		When attacker owns the environment, he can obtain the private key
+
+		It just move the problem to how the keys are stored
+
+Cryptographically strong password hashing
+	We store the hash of the psw.
+
+	Hashes are deterministic.
+
+	Hashes (of specific algo) always have the same length, so it does not disclose password caracteristics
+
+	If the hashes gets disclosed, then it is a big issue, since it is deterministic
+
+	Hashing with a salt
+		plain text psw -> add salt (a bunch of random bits) -> hashing algo -> hash & salt
+		even if the psw hash has been disclosed, then you are "ok"
+
+		Not all hashing algo are equal, some are really weak. There are hash breaker that computes billions of hashes per second. All you have to do is compute plain text passwords with the hashing algo and the salt, and compare the hash result for the associated hash.
+
+
+	OWASP password storage cheat sheet:
+		How to impose infeasible verification on the attacker
+		Make the workload of computing hashes to high for the attacker
+
+Leveraging native password storage functions
+	Never roll your own hashing algo
+	Encode != crypto
+	Most frameworks have built-in implementations
+
+Summary
+	Respect the passwords you are protecting
+	Get hashing right
+		but many algo are weak
+	Leverage what is out there already
+
+-------------------------------
+Registration
+-------------------------------
+
