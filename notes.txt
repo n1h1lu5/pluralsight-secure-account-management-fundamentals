@@ -1,0 +1,56 @@
+-------------------------------
+Introduction
+-------------------------------
+
+Why we need this course?
+	There is more and bigger security risks
+
+-------------------------------
+Fundamental Security Concepts
+-------------------------------
+
+The 3 objectives of HTTPS
+	Authenticity
+		Confident that you are on the right website (valid certificate (CA))
+	Integrity
+		Confidence that the information that we send and received has not been manipulated (by a MiTM)
+	Confidentiality
+		Confidence that nobody has been able to read sent/received data
+
+	The first 2 often gets neglected (ex: login form is not loaded over https)
+
+Brute force attacks
+	How frequently do the website allow login attempt?
+
+Account enumeration attacks
+	Dev. do not consider this often
+
+	The website disclose if the account exists or not
+
+	This is a privacy risk (do someone use a specific bank? Could be usefull for fishing)
+
+Understanding CSRF
+	attacker sends a malicious link (fishing scam, email, social media, invalidated redirect) -> user click -> go to the hacker's website -> the hacker's website send a constructed request to the target website to perform some action on it (usually, the user must be logged to the target website)
+
+	Ex: change psw
+
+Event logging
+	Important to reconstruct what went wrong and where to take action
+
+	What to log?
+		Who performed the action
+		What action was performed? On what resource? (url, function name, ...)
+		When the action was performed? (gives also chronolgy)
+		From where? (IP address (yes they can obfuscate it: VPN, tor, ...))
+		With what? (browser, user agent, ... (can be obfuscated))
+		Via where? (what path did the person take to get to the path, usefull for CSRF (was there an attaker site involved?))
+
+Summary
+	HTTPS everything
+	Brute force comes in many shapes
+	Log everything, as long as you can!
+
+-------------------------------
+Password storage
+-------------------------------
+
