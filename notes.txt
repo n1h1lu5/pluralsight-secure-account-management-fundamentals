@@ -258,3 +258,40 @@ Summary
 Remmember Me
 -------------------------------
 
+A very simple feature frequently built insecurely
+
+It is a feature which requires trade-offs: security vs usability
+
+There are many precedents of bad implementations
+
+Is remember me a good feature to build?
+	Reduces the friction of return visits
+	It allows long-running sessions
+
+	It increases numerous risks
+		Someone else using the pc
+		A CSRF risk being exploited (this is the most probable)
+
+How not to build a remember me feature
+	Remember me cookie encoded ...
+		They are sent around, since it is a cookie
+
+Implementing long-expiring cookies
+	Change the expiration of the AuthCookie .. that is it!
+
+Additional security controls
+	2 seperate controls
+		Save the user id for a long time
+		AuthCookie do not live very long
+
+	You keep personnalisation but you are secure(r)
+
+Summary
+	There is a discussion to be had around usability vs security
+	Never ok to store credentials in cookies in clear text
+	Session expiration of the auth token is the key
+
+-------------------------------
+Account Details Change
+-------------------------------
+
