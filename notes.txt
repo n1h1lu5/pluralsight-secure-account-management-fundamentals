@@ -188,3 +188,73 @@ Summary
 Logon
 -------------------------------
 
+Logons are one of the most abused features of account management
+They often do not protect against enumeration and brute force
+Identity persistence is often implemented poorly
+
+Logon failures and enumeration risks
+	Do not disclose account existance
+
+Protecting against brute force
+	IP blocking is not nessessary a good mitigation: bot net could jump to other IP adresses from infected machines around the world
+
+	For protecting:
+		Do
+			Degrade the service (gradually wait more between log fails) (but log right when the credentials are good)
+			Log everything			
+		Don't
+			Lock an account out (risk of DoS)
+			Restrict logon by IP (infected machines, VPN, tor, ...)
+			Limit attempts with a cookie (the attackers just won't send the cookie)
+
+Persisting auth sessions
+	Understanding auth persistence
+		User sends logon -> auth token is returned
+
+		Every other request has the auth token in it
+
+		Auth tokens must be cryptographic
+			And also HTTP only and secure flag on (and the website over https)
+
+Multiple simultaneous sessions from the same user
+	Most login do not restrict this server side.
+
+	This is part of the nature of the site (fb vs banks)
+
+	What to do to prevent simultaneous logon?
+		Centrally tracking logon state
+			Logon state tracking server side
+
+	Approaches to simultaneous logons
+		Disallow the logon
+		Log the other session out automatically
+
+		You have to be able to log other session out
+			What happen when the other session have unsaved data?
+
+		There is a lot of edge cases
+
+Fraud detection and prevention
+	Logging
+		Time (UTC, saves a lot of pain if you move your app), Thread, Level, Logger (where it has been sent from), Message, IP, Headers (language, cookies, referer (where they came from), user agent (browser + version) (it will disclose if it is the googlebot, a user, or something else..))
+
+	Ex: Linkedin: block you if you login from different computer, and send a confirm email. Facebook: Sends an email if connection in other country.
+
+	Github: you can see all conected account and disconnect the ones you do not recognise. Also some history
+
+Employing 2 factor authentication (2FA)
+	user logon -> sever asks a request token (SMS, an auth app) -> user provide the token
+
+	You do not have to build the thing from scratch (ex: MS Azure is built-in, it is easy to include that in your app.)
+
+Summary
+	Logons are frequently attacked
+	You must expect brute force attacks
+	Be cautious with auth persistence
+	Simultaneous sessions can be tricky
+	Consider the role of 2FA
+
+-------------------------------
+Remmember Me
+-------------------------------
+
