@@ -337,7 +337,70 @@ Summary
 	There are many account attributes that are attractive to attackers
 	And there are many attack vectors available to control them
 	Identity verification is the key defense
-	
+
 -------------------------------
 Password reset
+-------------------------------
+
+Reseting vs reminding
+	Do not send the forgotten password via email (it is not secure, no encryption, and providers read your emails, and it is sent via smtp)
+
+The risk of a persistent reset password
+	A new password has been sended to you.. not much different than the above
+	And it is persistent, so you are not force to change it..
+
+The risk of account DoS attacks
+
+Using a time-limited nonce reset token
+	Can't email the existing password
+	Can't email a new password
+	Can't invalidate the existing password
+
+	Can email a reset link
+	Can use a nonce in the link
+	Can time-limit the nonce validity (have x min to reset the password, otherwise the user has to start over)
+
+Strengthening the reset with verification questions
+	Social engineering can make them easy to be answered
+
+	This is a defense for when an email account has been hijacked
+
+Creating good identity verification questions
+	Bad identity questions
+		Favourite colour?
+			Limited set
+		What was your first car?
+		Where did you go to high school?
+
+	What makes a good "secret question"
+		Concise (a computer must understands)
+		Specific
+		Diverse range of answers
+		Low discoverability
+		Constant over time
+
+	We do not want the user to create the questions (ex: what is the color of the sky? ...)
+
+	Examples of good questions
+		Name of the first person you kissed?
+		First teacher?
+		Name of your first pet? (usually)
+
+		But some user might have forgotten / didn't do some of these.
+
+	Use a psw manager to generate the answers for each questions
+
+The risk of password hints
+	Password hint may be stored in plain text. So it is now easy to guess / social engineer the password
+
+The risk of brute force
+	Cannot let the user guess the secret questions
+
+	Use a captcha or the like
+
+Summary
+	
+
+-------------------------------
+Logoff
 -------------------------------
