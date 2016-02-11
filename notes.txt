@@ -398,9 +398,35 @@ The risk of brute force
 
 	Use a captcha or the like
 
-Summary
-	
-
 -------------------------------
 Logoff
 -------------------------------
+
+Why logging off is important
+	Even if the auth cookie is at expire session, some browser will remember it.
+		(Like restoring tab session)
+What constitutes "logging off"
+	logoff request from the user -> server removes the auth token -> all subsequent request are un-auth'd
+
+Expiring auth sessions on the server
+	Even if the auth cookie is no more in the browser, if it is still correct on the server, well an attacker could steal that auth cookie and recreate a valid request.
+
+	Many frameworks do not check that (including MS)
+
+Remotely logging off a session
+	Centrally tracking logon state
+
+Why logoff requires CSRF protection
+	It depends on the site, for example, an auction site
+
+	Use anti-forgery token that can't be forge by an attacker
+
+Summary
+	Always provide the ability to logoff
+	Consider if remote logoff is required by an admin that can de-auth a token
+	Use anti-forgery token
+
+-------------------------------
+Additional Considerations
+-------------------------------
+
