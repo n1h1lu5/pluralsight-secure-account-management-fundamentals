@@ -295,3 +295,49 @@ Summary
 Account Details Change
 -------------------------------
 
+Why attackers change account details
+	To gain access to personally identifiable info, interactions with other individuals
+
+	Gain control of the target's account
+		Send email
+		Make purchases
+		Hold them to ransom
+
+How attakers change account details
+	Direct browser access (sit down at the PC)
+	Credential theft
+	CSRF
+	Session hijacking (authtoken sent insecurly, authtoken in url and it is shared)
+	Social engineering
+
+Account attributes attackers want to change
+	Password
+	Email (can be changed to block the user the ability to reset his password)
+	Identity
+	Credit card
+
+Verifying the current password
+	This is important to enter the current password in order to reset a password (even if the user is logged in, it protects against CSRF)
+	This also increase the risk of a CSRF attack
+
+Account change notification
+	If the attacker already have the legtimate password.
+
+	Must send an email for account changes.
+
+	It is harder to intercept an SMS than an email (choose SMS when possible)
+
+	What would happen if the attacker changes the email?
+		there is a way to mitigate that risk: Cannot change email address without confirmation in the original address itself
+
+Confirming email changes via email
+	GUID -> global unique identifier
+
+Summary
+	There are many account attributes that are attractive to attackers
+	And there are many attack vectors available to control them
+	Identity verification is the key defense
+	
+-------------------------------
+Password reset
+-------------------------------
