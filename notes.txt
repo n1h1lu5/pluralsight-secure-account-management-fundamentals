@@ -430,3 +430,58 @@ Summary
 Additional Considerations
 -------------------------------
 
+Identity as a service
+	Azure offers to manage all the account management we just saw during the course.
+
+OpenID Connect
+	You do not have to deal with account management stuff. Your resposibility is to integrate OpenID.
+
+	OpenID provides a lot of options to log in, maybe too many options
+
+Understanding Web Application Firewalls (WAF)
+	CloudFlare is a WAF, it sits in the middle, between the client and the server.
+		It can look at request and detect a common attack pattent and reject the request
+		...
+
+	But do not think you can neglect security considerations if you use this. It is an extra layer, nothing else.
+
+The mechanics and risks within 2 factor authentication (2FA)
+	The risk of most 2FA:
+		You have to wait for some time before 2FA is available. It is to make sure that it is the true user that wants to enable 2FA.
+
+Protecting against the threat from within
+	What access does someone need? (to do their job)
+	What access do they have?
+	Is their access logged?
+
+	The principle of least privilege
+		Only access to ressources that are legitemitely needed to be able to do their job
+
+The role of SSL
+	We should not use SSL for anything, we should use the TLS protocol instead.
+
+	The original http request on a redirect is still vulnerable for a man in the middle (like redirecting to their own website)
+
+		HSTS is what makes everything in https
+
+Attack vectors in other account management channels
+	Are we applying the same control over different channels? (browser vs mobile)
+
+The threat of social engineering
+	The humans are the weaker link in the security system because we are vulnerable to suggestions.
+
+	2 classes against social engineering
+		Social defenses (training for people, have limited)
+			Some compagnies hire firms to fish their employee, to train them by experience
+		Technical defenses
+			2FA
+			Notifications
+			Principle of least privilege
+			Logging
+
+Summary
+	Think about making all this someone else's problem
+		Azure active directory service, Open ID connect, etc
+	Employ additional controls beyond those in this course
+		Ex: WAF (Web Application Firewalls)
+	Beware the riskiest element of all: us
